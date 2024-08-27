@@ -1,5 +1,7 @@
 const express = require("express");
 const app = express();
+const session = require("express-session");
+const flash = require("connect-flash");
 
 require("dotenv").config();
 
@@ -11,6 +13,13 @@ const debug = require("debug")("development:app");
 
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
+app.use(session({
+    secret: process.env.SESSION_SECRET,
+    saveUninitialized: false,
+    resave: false
+}));
+
+app.use(flash());
 
 
 app.use(express.static(path.join(__dirname, "public")));

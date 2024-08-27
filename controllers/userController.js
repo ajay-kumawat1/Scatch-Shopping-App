@@ -36,7 +36,7 @@ module.exports.login = async (req, res) => {
         }
         const token = generateToken(user);
         res.cookie("token", token);
-        return res.status(200).json({user: user, msg: "You are logged in"});
+        return res.redirect("/shop");
 
     } catch (error) {
         return res.status(500).send(error.message);
