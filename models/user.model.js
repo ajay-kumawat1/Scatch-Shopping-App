@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const userSchema = new mongoose.Schema({
     fullName: {
         type: String,
-        required: [true, "Name is required"]
+        required: [true, "fullName is required"]
     },
     email: {
         type: String,
@@ -18,10 +18,6 @@ const userSchema = new mongoose.Schema({
         type : Array,
         default : []
     },
-    isAdmin : {
-        type : Boolean,
-        default : false
-    },
     order: {
         type: Array,
         default: []
@@ -34,6 +30,10 @@ const userSchema = new mongoose.Schema({
         type: String,
         default: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQanlasPgQjfGGU6anray6qKVVH-ZlTqmuTHw&s"
     }
-});
+},
+{
+    timestamps: true
+}
+);
 
 module.exports = mongoose.model("User", userSchema);
