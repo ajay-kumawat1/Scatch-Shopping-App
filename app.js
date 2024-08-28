@@ -1,7 +1,11 @@
 const express = require("express");
 const app = express();
+const cookieParser = require("cookie-parser");
 const session = require("express-session");
 const flash = require("connect-flash");
+const cors = require('cors');
+app.use(cors());
+
 
 require("dotenv").config();
 
@@ -11,6 +15,7 @@ const dbConnect = require("./config/dbConnect");
 
 const debug = require("debug")("development:app");
 
+app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 app.use(session({

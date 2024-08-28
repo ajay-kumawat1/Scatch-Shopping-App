@@ -6,4 +6,9 @@ if(process.env.NODE_ENV === "development") {
     router.post("/create", register);
 }
 
+router.get("/admin", (req, res) => {
+    const success = req.flash("success");
+    res.render("createproducts", {success});
+});
+
 module.exports = router;

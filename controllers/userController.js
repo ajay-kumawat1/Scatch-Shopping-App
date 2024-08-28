@@ -34,9 +34,13 @@ module.exports.login = async (req, res) => {
         if(!await bcrypt.compare(password, user.password)) {
             return res.status(400).send("Invalid credentials");
         }
+
         const token = generateToken(user);
-        res.cookie("token", token);
-        return res.redirect("/shop");
+        
+        res.cookie("Token", token, { httpOnly: true, secure: true, maxAge: 3600000 });
+        console.log("Login successful");
+        
+        // return res.redirect("/shop");
 
     } catch (error) {
         return res.status(500).send(error.message);
