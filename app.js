@@ -5,8 +5,6 @@ const session = require("express-session");
 const flash = require("connect-flash");
 const cors = require('cors');
 app.use(cors());
-
-
 require("dotenv").config();
 
 const port = process.env.PORT || 8000;

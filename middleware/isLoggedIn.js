@@ -14,8 +14,6 @@ module.exports.isLoggedIn = async (req, res, next) => {
         req.user = user;
         next();
     } catch (error) {
-        console.log(error);
-        
         req.flash("error", "You are not logged in");
         res.redirect("/");
     }
